@@ -14,7 +14,7 @@ Instead, the templates used in MARB are based on naturally occurring written lan
 
 ### Dataset
 
-The dataset consists of 30K template sequences -- 10K containing each of the phrases "a person", "a woman", "a man" -- and their modifications.
+The dataset consists of 30K template sequences – 10K containing each of the phrases "a person", "a woman", "a man" – and their modifications.
 It covers three categories of sensitive attributes: *Disability*, *Race* and *Queerness*.
 Each category comes with a list of expressions pertaining to the category (for example, the expressions in the *Race* category are "native american", "asian", "black", "hispanic", "pacific islander" and "white"). 
 Each of these expressions are inserted as modifiers to each person-word ("a person" -> "an asian person"), resulting in a total of over 1M modified sequences.
