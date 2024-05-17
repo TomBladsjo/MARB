@@ -1,5 +1,5 @@
 # MARB 
-### - a dataset for studying Marked Attribute Reporting Bias
+### A dataset for studying Marked Attribute Reporting Bias
 
 This repository contains the code used for dataset creation and model evaluation in the Master's thesis "Don't Mention the Norm -- On the Relationship Between Reporting Bias and Social Bias in Humans and Language Models". 
 
