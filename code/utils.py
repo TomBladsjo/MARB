@@ -22,7 +22,7 @@ def pppl(log_probs):
     N = sum([len(sent) for sent in log_probs])
     if N == 0:
         return None
-    PPPL = np.exp2(1-(1/N)*sum([sum(sent) for sent in log_probs]))
+    PPPL = np.exp2(-(1/N)*sum([sum(sent) for sent in log_probs]))
     return PPPL
 
 
@@ -222,7 +222,7 @@ def batch_mask_unmodified(sentence, original, lm):
     return sent_log_probs
 
 
-def get_log_prob_unigram(masked_token_ids, token_ids, mask_position, lm): # Changed so I can use the same softmax as for batched version
+def get_log_prob_unigram(masked_token_ids, token_ids, mask_position, lm): # Changed so we can use the same softmax as for batched version
     """
     (Adapted from https://github.com/katyfelkner/winoqueer/blob/main/code/metric.py)
     Given a sequence of token ids, with one masked token, return the log probability of the masked token.
@@ -277,9 +277,11 @@ def evaluate_masked(args):
     if args['n_ex']:
         print('Preparing examples...')
         full_df = pd.read_csv(args['input'])
-        df_data, _ = train_test_split(full_df, train_size=args['n_ex'], stratify=full_df['person_word'])  
-        df_data.reset_index(drop=True)
-        # df_data = pd.read_csv(args['input'])[:args['n_ex']]  # (alternative without shuffle, does not stratify by person_word)
+        # For fully reproducible results:
+        df_data = full_df.groupby('person_word', group_keys=False).apply(lambda x: x[:n]).reset_index(drop=True)
+        # Alternative with random sampling stratified by person-word:
+        #df_data, _ = train_test_split(full_df, train_size=args['n_ex'], stratify=full_df['person_word']) 
+        #df_data.reset_index(drop=True)
     else:
         df_data = pd.read_csv(args['input'])
         args['n_ex'] = 'all'
@@ -298,7 +300,7 @@ def evaluate_masked(args):
     scorefile = os.path.join(outdir, outfile)
 
     mask_function = mask_unmodified if args['metric'] == 'context-only' else mask_all_unigrams
-    batch_mask_function = batch_mask_unmodified if args['metric'] == 'context-only' else batch_mask_all_unigrams  # TODO batch function for context-only
+    batch_mask_function = batch_mask_unmodified if args['metric'] == 'context-only' else batch_mask_all_unigrams 
 
     print('Evaluating...')
     model.eval()
@@ -380,9 +382,11 @@ def evaluate_autoregressive(args):
     if args['n_ex']:
         print('Preparing examples...')
         full_df = pd.read_csv(args['input'])
-        df_data, _ = train_test_split(full_df, train_size=args['n_ex'], stratify=full_df['person_word'])  
-        df_data.reset_index(drop=True)
-        # df_data = pd.read_csv(args['input'])[:args['n_ex']]  # (alternative without shuffle, does not stratify by person_word)
+        # For fully reproducible results:
+        df_data = full_df.groupby('person_word', group_keys=False).apply(lambda x: x[:n]).reset_index(drop=True)
+        # Alternative with random sampling:
+        #df_data, _ = train_test_split(full_df, train_size=args['n_ex'], stratify=full_df['person_word'])
+        #df_data.reset_index(drop=True)
     else:
         df_data = pd.read_csv(args['input'])
         args['n_ex'] = 'all'
@@ -409,7 +413,7 @@ def evaluate_autoregressive(args):
     with torch.no_grad():
         with tqdm(total=total) as pbar:
             for index, data in df_data.iterrows():
-                for cat in scores:
+                for cat in scores:        ## if data[cat] == float('nan'): pass??? otherwise its gonna act weird when it gets to queerness
                     if cat == 'person_word':  # save info about person word
                         scores[cat].append(data[cat])
                     elif type(data[cat]) != str:

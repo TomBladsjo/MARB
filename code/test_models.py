@@ -18,7 +18,7 @@ if __name__ == '__main__':
     parser.add_argument("-d", "--device", dest='device', type=str, default='cuda:0', help="Device to use (default='cuda:0').")
     parser.add_argument("-m", "--metric", dest='metric', type=str, default='auto', help="Metric to use ('PPPL'/'PLL'/'PPPL-corpus' for masked models, 'PPL'/'LL'/'PPL-corpus' for autoregressive models). Default='auto' ('PPPL' for masked models, 'PPL' for autoregressive models.)")
     parser.add_argument("-mt", "--metric_type", dest='metric_type', type=str, default='all-tokens', help="Whether to test all tokens ('all-tokens') or only context tokens ('context-only'). Default='all-tokens'.")
-    parser.add_argument("-n", "--n_ex", dest='n_ex', type=int, required=False, help="Size of subset to evaluate on. If None, evaluates on full dataset.")
+    parser.add_argument("-n", "--n_ex", dest='n_ex', type=int, required=False, help="Size of subset to evaluate on. If not provided, evaluates on full dataset.")
     
     args = parser.parse_args()
 
