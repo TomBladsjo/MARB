@@ -24,7 +24,7 @@ These can be used to investigate whether a model expects to see certain attribut
 
 ##### Dataset
 
-The dataset used in the thesis is available on request (email tom.sodahl@gmail.com).
+The full dataset can be found at `data/MARB.tar.gz`. 
 To create a MARB-style dataset from your own data, use `notebooks/dataset_creation.ipynb`.
 
 ##### Model evaluation
