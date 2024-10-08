@@ -278,7 +278,7 @@ def evaluate_masked(args):
         print('Preparing examples...')
         full_df = pd.read_csv(args['input'])
         # For fully reproducible results:
-        df_data = full_df.groupby('person_word', group_keys=False).apply(lambda x: x[:n]).reset_index(drop=True)
+        df_data = full_df.groupby('person_word', group_keys=False).apply(lambda x: x[:args['n_ex']]).reset_index(drop=True)
         # Alternative with random sampling stratified by person-word:
         #df_data, _ = train_test_split(full_df, train_size=args['n_ex'], stratify=full_df['person_word']) 
         #df_data.reset_index(drop=True)
@@ -383,7 +383,7 @@ def evaluate_autoregressive(args):
         print('Preparing examples...')
         full_df = pd.read_csv(args['input'])
         # For fully reproducible results:
-        df_data = full_df.groupby('person_word', group_keys=False).apply(lambda x: x[:n]).reset_index(drop=True)
+        df_data = full_df.groupby('person_word', group_keys=False).apply(lambda x: x[:args['n_ex']]).reset_index(drop=True)
         # Alternative with random sampling:
         #df_data, _ = train_test_split(full_df, train_size=args['n_ex'], stratify=full_df['person_word'])
         #df_data.reset_index(drop=True)
