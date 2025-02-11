@@ -15,7 +15,7 @@ if __name__ == '__main__':
     parser.add_argument("outdir", type=str, default='../results/', help="Path to dir for resulting score file. Default='../results/'.")
     parser.add_argument('-l', '--large', dest='large', action='store_true', default=False, help="If this flag is used, the larger version of the model (if one is available) will be tested.")
     parser.add_argument('-c', '--category', dest='cat', type=lambda s: [item.strip() for item in s.split(',')], default=['all'], help="Categories to evaluate, delimited by ','. If not provided, tries to evaluate on all CSV files available in 'inputdir'.")
-    parser.add_argument("-d", "--device", dest='device', type=str, default='cuda:0', help="Device to use (default='cuda:0').")
+    parser.add_argument("-d", "--device", dest='device', type=str, default='cuda', help="Device to use (default='cuda').")
     parser.add_argument("-m", "--metric", dest='metric', type=str, default='auto', help="Metric to use ('PPPL'/'PLL'/'PPPL-corpus' for masked models, 'PPL'/'LL'/'PPL-corpus' for autoregressive models). Default='auto' ('PPPL' for masked models, 'PPL' for autoregressive models.)")
     parser.add_argument("-mt", "--metric_type", dest='metric_type', type=str, default='all-tokens', help="Whether to test all tokens ('all-tokens') or only context tokens ('context-only'). Default='all-tokens'.")
     parser.add_argument("-n", "--n_ex", dest='n_ex', type=int, required=False, help="Size of subset to evaluate on. If not provided, evaluates on full dataset.")
@@ -82,6 +82,15 @@ if __name__ == '__main__':
         tokenizer = AutoTokenizer.from_pretrained("facebook/opt-350m")
         eval_fn = evaluate_autoregressive
 
+
+    elif args.model.lower() == 'mistral':
+        from transformers import AutoTokenizer, AutoModelForCausalLM
+        tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
+        model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-v0.1", device_map = 'auto')
+        eval_fn = evaluate_autoregressive
+    
+    
+
     else:
         sys.exit(f'Error: Unsupported model: {args.model}')
 
@@ -90,10 +99,10 @@ if __name__ == '__main__':
     print(f'Evaluating {model.name_or_path} on {cats}.')
 
     if args.metric == 'auto':
-        if args.model.lower() in ['gpt2', 'bloom', 'opt']:
-            metric = 'PPL'
-        else:
+        if args.model.lower() in ['bert', 'albert', 'roberta']:
             metric = 'PPPL'
+        else:
+            metric = 'PPL'
     else:
         metric = args.metric
         

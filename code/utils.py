@@ -399,9 +399,11 @@ def evaluate_autoregressive(args):
 
     print('Evaluating...')
     model.eval()
-    
-    device = torch.device(args['device'])
-    model.to(device)
+
+    ## instead of the following, use device_map='auto' when loading model from huggingface, this way we can use multiple gpus
+    if not hasattr(model, 'hf_device_map'):
+        device = torch.device(args['device'])
+        model.to(device) 
 
 
     # score each sentence. score frames has all data columns (original included for comparison, person_word included for later aggregation)
@@ -419,7 +421,7 @@ def evaluate_autoregressive(args):
                     elif type(data[cat]) != str:
                         scores[cat].append(float('nan'))
                     else:
-                        inputs = tokenizer(data[cat], return_tensors="pt").to(device)
+                        inputs = tokenizer(data[cat], return_tensors="pt").to(model.device)
                         nll = float(model(**inputs, labels=inputs["input_ids"]).loss)
                         if args['metric'] == 'PPL':
                             scores[cat].append(np.exp2(nll))

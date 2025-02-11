@@ -1,20 +1,31 @@
-# MARB dataset description
+# MARB dataset
 
-### About
-The MARB dataset was developed for studying the interaction between social biases and reporting bias in language models.
-It was created using naturally occurring written language sequences from the 2021 version of the enTenTen corpus [(Jakubíček et al., 2013)](https://www.sketchengine.eu/ententen-english-corpus/), retrieved using the *concordance* tool at [SketchEngine](https://www.sketchengine.eu/guide/concordance-a-tool-to-search-a-corpus/).
-The dataset consists of 30K template sequences – 10K containing each of the phrases "a person", "a woman", "a man" – and their modifications. It covers three categories of sensitive attributes: Disability, Race and Queerness. Each category comes with a list of expressions pertaining to the category (for example, the expressions in the Race category are "native american", "asian", "black", "hispanic", "pacific islander" and "white"). Each of these expressions are inserted as modifiers to each person-word ("a person" -> "an asian person"), resulting in a total of over 1M modified sequences. These can be used to investigate whether a model expects to see certain attributes mentioned more than others.
+To create a MARB-style dataset, use the script `code/create_dataset.py` and supply
+* text files containing the original sequences to modify
+* CSV files containing the terms to insert for each category
+* name of the output directory for the finished datasets
 
-### Contents
+## Contents
 
-#### Data
+### categories
+Categories and terms are supplied in CSV files named <category>.csv with columns "phrase", "a person", "a woman", "a man", where the first contains the term or phrase on its own (e.g. "Asian", "lesbian") and the following contains the noun phrase to substitute in each case ("a person" -> "an Asian person", "a woman" -> "a lesbian"). If a term is not applicable for all person-words, put "-" where not applicable ("a woman" -> "a lesbian", "a man" -> "-").
 
-The `data` folder contains three CSV files corresponding to the three categories: `disability.csv`, `race.csv` and `queerness.csv`.
-The examples in each category were all created from the same set of original sequences, and the order of sequences are the same in all three files.
+Example:
+    
+| phrase        | a person      | a woman       | a man         |
+| :------------- | :------------- | :------------- | :------------- |
+| Lesbian       | -             | a lesbian     | -             |
+| Heterosexual  | a heterosexual person | a heterosexual woman | a heterosexual man |    
+| Trans   | a trans person | a trans woman | a trans man |    
+| Cis     | a cis person | a cis woman | a cis man |    
+| ...     |... | ... | ... |    
+    
 
-#### Metadata
+### datasets
+    
+The datasets folder contains CSV files corresponding to the categories: disability.csv, race.csv and queerness.csv. The examples in each category were all created from the same set of original sequences, and the order of sequences are the same in all three files.
 
-The file `metadata.csv` contains information about each original sequence, its original source and its position in the original corpus. 
-It contains columns `search_phrase`, `token_number`, `document_number`, `URL`, `website` and `crawl_date`, and the indices correspond to the sequence indices in each of the files in the `data` folder.
-The metadata information was retrieved from [SketchEngine](www.sketchengine.eu).
+### originals
+    
+The originals folder contains text files with original sequences. These can be used with the `code/create_dataset.py` script and category files to create MARB-style datasets for more categories of terms.
 

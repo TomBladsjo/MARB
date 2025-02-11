@@ -14,7 +14,7 @@ Instead, the templates used in MARB are based on naturally occurring written lan
 
 ### Dataset
 
-The dataset consists of 30K template sequences – 10K containing each of the phrases "a person", "a woman", "a man" – and their modifications.
+The dataset consists of nearly 30K template sequences – 9.5K containing each of the phrases "a person", "a woman", "a man" – and their modifications.
 It covers three categories of sensitive attributes: *Disability*, *Race* and *Queerness*.
 Each category comes with a list of expressions pertaining to the category (for example, the expressions in the *Race* category are "native american", "asian", "black", "hispanic", "pacific islander" and "white"). 
 Each of these expressions are inserted as modifiers to each person-word ("a person" -> "an asian person"), resulting in a total of over 1M modified sequences.
@@ -24,8 +24,8 @@ These can be used to investigate whether a model expects to see certain attribut
 
 ##### Dataset
 
-The full dataset can be found at `data/MARB.tar.gz`. 
-To create a MARB-style dataset from your own data, use `notebooks/dataset_creation.ipynb`.
+The full dataset can be found at `data/data.tar.gz`. 
+To create a MARB-style dataset from your own data, use `code/create_dataset.py`.
 
 ##### Model evaluation
 
@@ -34,7 +34,7 @@ To evaluate a model on the dataset, run:
 `python code/test_models.py <model> <path to dataset directory> <path to directory for result files>`
 
 where `model` is the model name as a string (case insensitive).
-Available models are (MLMs:) 'BERT', 'Roberta', 'Albert', (Generative:) 'GPT2', 'Bloom', 'OPT'.
+Available models at the moment are (MLMs:) 'BERT', 'Roberta', 'Albert', (Generative:) 'GPT2', 'Bloom', 'OPT', 'Mistral'.
 To see all available options, run
 `python code/test_models.py -h`.
 
