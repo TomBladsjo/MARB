@@ -29,3 +29,21 @@ The datasets folder contains CSV files corresponding to the categories: disabili
     
 The originals folder contains text files with original sequences. These can be used with the `code/create_dataset.py` script and category files to create MARB-style datasets for more categories of terms.
 
+### metadata
+
+The file `metadata.csv` contains information about the original sequences; the row indices correspond to those of "originals.csv" as well as each of the dataset files. The "search_phrase" column shows the regular expression used to extract the sequence from the EnTenTen 2021 corpus. The columns "token_number", "document_number", "URL", "website" and "crawl_date" contain additional information about the sequence obtained from SketchEngine.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

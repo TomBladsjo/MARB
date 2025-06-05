@@ -10,7 +10,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Evaluate model on the MARB dataset.',
     )
-    parser.add_argument("model", type=str, help="Model to test. Available models are (MLMs:) 'BERT', 'Roberta', 'Albert', (Generative:) 'GPT2', 'Bloom', 'OPT'.")
+    parser.add_argument("model", type=str, help="Model to test. Available models are (MLMs:) 'BERT', 'Roberta', 'Albert', (Generative:) 'GPT2', 'Bloom', 'OPT', 'Mistral'.")
     parser.add_argument("inputdir", type=str, default='../data/', help="Path to dataset dir. Default='../data/'.")
     parser.add_argument("outdir", type=str, default='../results/', help="Path to dir for resulting score file. Default='../results/'.")
     parser.add_argument('-l', '--large', dest='large', action='store_true', default=False, help="If this flag is used, the larger version of the model (if one is available) will be tested.")
