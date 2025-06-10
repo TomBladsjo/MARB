@@ -28,13 +28,9 @@ Unlike many existing benchmark datasets, MARB does not rely on artificially cons
 
 ### Citation
 
-```
-Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), Vienna, Austria. Association for Computational Linguistics.
-```
+> Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), Vienna, Austria. Association for Computational Linguistics.
 
-```
-Tom Södahl Bladsjö. 2024. Don't Mention the Norm. Masters Thesis, Gothenburg, Sweden. University of Gothenburg.
-```
+> Tom Södahl Bladsjö. 2024. Don't Mention the Norm. Masters Thesis, Gothenburg, Sweden. University of Gothenburg.
 
 
 ## 2. Usage	
