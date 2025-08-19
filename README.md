@@ -37,3 +37,16 @@ To see all available options, run
 `python code/test_models.py -h`.
 
 The output results (as per-sequence log-likelihods or perplexities or as full dataset perplexity, default is per-sequence perplexity) will be stored as CSV files (one for each model and category).
+
+
+### Citing MARB
+
+If you use the MARB dataset, please cite [the paper describing it](https://aclanthology.org/2025.gebnlp-1.5/).
+The standard citation can be found below.
+
+> Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), pages 59–74, Vienna, Austria. Association for Computational Linguistics.
+
+Other references related to MARB can be found below.
+Please cite them if you find them useful.
+
+> Tom Södahl Bladsjö. 2024. Don't Mention the Norm. Masters Thesis, Gothenburg, Sweden. University of Gothenburg.
