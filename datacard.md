@@ -16,6 +16,7 @@ Said template can be found [here](https://github.com/spraakbanken/SuperLim).
 - **Funded by:** N/A
 - **Link(s)/permanent identifier(s):**
     - https://github.com/TomBladsjo/MARB/
+    - https://doi.org/10.18653/v1/2025.gebnlp-1.5
 
 
 ### Abstract
@@ -28,7 +29,7 @@ Unlike many existing benchmark datasets, MARB does not rely on artificially cons
 
 ### Citation
 
-> Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), Vienna, Austria. Association for Computational Linguistics.
+> Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), pages 59–74, Vienna, Austria. Association for Computational Linguistics.
 
 > Tom Södahl Bladsjö. 2024. Don't Mention the Norm. Masters Thesis, Gothenburg, Sweden. University of Gothenburg.
 
@@ -144,7 +145,7 @@ Finally, while MARB can be used to identify certain types of bias in a model, a 
     - The dataset creation script and the format of the category files have been changed to make it easier to modify and extend the existing dataset.
 - **Access to previous versions:** Email [tom.sodahl@gmail.com](mailto:tom.sodahl@gmail.com)
 - **This document created:** 20250605
-- **This document last updated:** 20250605
+- **This document last updated:** 20250819
 - **Where to look for further details:** See [2]
 - **Documentation template version:** [1.0](https://github.com/spraakbanken/SuperLim/blob/main/documentation_sheet_template_v1.0.tsv)
 
@@ -154,4 +155,4 @@ Finally, while MARB can be used to identify certain types of bias in a model, a 
 - **Related projects:** N/A
 - **References:**
     1. Miloš Jakubíček, Adam Kilgarriff, Vojtěch Kovář, Pavel Rychlý, Vít Suchomel. 2013. The TenTen Corpus Family. In _7th International Corpus Linguistics Conference CL 2013_, Lancaster, United Kingdom.
-    2. Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), Vienna, Austria. Association for Computational Linguistics.
+    2. Tom Södahl Bladsjö and Ricardo Muñoz Sánchez. 2025. Introducing MARB — A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models. In Proceedings of the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP), pages 59–74, Vienna, Austria. Association for Computational Linguistics.
