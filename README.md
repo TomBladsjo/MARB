@@ -1,6 +1,12 @@
 # MARB 
 ### – A Dataset for Studying the Social Dimensions of Reporting Bias in Language Models.
 
+We're glad to announce that our paper won "_Best Paper Award_" at the GeBNLP 2025 workshop!
+
+This repo contains the MARB dataset, presented at the 6th Workshop on Gender Bias in Natural Language Processing (GeBNLP).
+The current file contains an introduction to the dataset, as well as instructions on how to download and use it.
+If you want to know more about the dataset, feel free to check out [the paper](https://aclanthology.org/2025.gebnlp-1.5/) and [the datacard](https://github.com/TomBladsjo/MARB/blob/main/datacard.md).
+
 ### About
 
 Reporting bias (the human tendency to not mention obvious or redundant information) and social bias (societal attitudes toward specific demographic groups) have both been shown to propagate from human text data to language models trained on such data. 
